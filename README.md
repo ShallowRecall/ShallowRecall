@@ -13,7 +13,7 @@ Here are some ideas to get you started:
 - ⚡ Fun fact: ...
 -->
 ### Hi there 👋
-<h1 align="center"> <a href="https://sunguoqi.com/"> <img src="https://readme-typing-svg.herokuapp.com/?lines=console.log(%22Hello%2C%20World!%22);ShallowRecall祝您今天愉快!&center=true&size=27"> </a> </h1>
+<h1 align="center"> <a href="https://shallowrecall.top/"> <img src="https://readme-typing-svg.herokuapp.com/?lines=console.log(%22Hello%2C%20World!%22);ShallowRecall祝您今天愉快!&center=true&size=27"> </a> </h1>
 <!-- ![Github Stats](https://github-readme-stats.vercel.app/api?username=ShallowRecall&show_icons=true&theme=dark&count_private=true)
 
 ![Most Used Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=ShallowRecall&theme=dark&layout=compact) -->
