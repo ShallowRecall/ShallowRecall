@@ -14,8 +14,8 @@ Here are some ideas to get you started:
 -->
 ### Hi there 👋
 <h1 align="center"> <a href="https://shallowrecall.top/"> <img src="https://readme-typing-svg.herokuapp.com/?lines=console.log(%22Hello%2C%20World!%22);ShallowRecall祝您今天愉快!&center=true&size=27"> </a> </h1>
-<!-- ![Github Stats](https://github-readme-stats.vercel.app/api?username=ShallowRecall&show_icons=true&theme=dark&count_private=true)
 
+<!-- ![Github Stats](https://github-readme-stats.vercel.app/api?username=ShallowRecall&show_icons=true&theme=dark&count_private=true)
 ![Most Used Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=ShallowRecall&theme=dark&layout=compact) -->
 
 <div align="center"> <img height="137px" src="https://github-readme-stats.vercel.app/api?username=ShallowRecall&hide_title=true&hide_border=true&show_icons=trueline_height=21&text_color=000&icon_color=000&bg_color=0,ea6161,ffc64d,fffc4d,52fa5a&theme=graywhite" /> </div>
