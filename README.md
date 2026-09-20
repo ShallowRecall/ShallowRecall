@@ -219,50 +219,7 @@
   </p>
 -->
 
-<!-- ═══════════════════════════ 底部横幅 ═══════════════════════════ -->
-
-<p align="center">
-  <img width="100%" alt="Thanks for visiting" src="https://capsule-render.vercel.app/api?type=waving&color=0:7C3AED,100:36BCF7&height=120&section=footer&text=Thanks%20for%20visiting&fontSize=24&fontColor=ffffff&animation=twinkling" />
-</p>
-
-<!--
-  ══════════════════════════════════════════════════════════════════════
-   进阶（可选）：仓库内自生成的指标卡与贡献蛇形动画
-  ══════════════════════════════════════════════════════════════════════
-
-  为什么需要这一步？
-    上面「GitHub 数据」里的卡片依赖第三方公共服务。公共实例随时可能限流或停摆
-    （本项目最初用的 github-readme-stats / github-profile-trophy /
-      github-readme-activity-graph 三个 Vercel 实例在 2026 年已分别返回
-      503 DEPLOYMENT_PAUSED 与 402 Payment Required，全部失效）。
-    如果你想再加一层更稳的方案：由 GitHub Actions 在本仓库内生成 SVG 并提交回来，
-    走 GitHub 自己的 CDN，不受第三方限流影响，国内访问也更稳定。
-
-  启用只需 3 步：
-
-    第 1 步 · 创建令牌
-      GitHub 右上角头像，Settings，Developer settings，Personal access tokens。
-      新建一个 token 并复制（只读公开数据即可，无需勾选额外 scope）。
-
-    第 2 步 · 添加仓库 Secret
-      本仓库 Settings，Secrets and variables，Actions，New repository secret。
-      Name 填 METRICS_TOKEN，Secret 粘贴上一步的令牌。
-
-    第 3 步 · 运行一次工作流
-      Actions 标签页，选择 Metrics 或 Snake Animation，点 Run workflow。
-      跑完后两个工作流会把产物提交回仓库，此时把下面整段的注释去掉即可显示。
-
-  产物位置：
-    github-metrics.svg                                    （metrics，提交到 main 分支）
-    output 分支下的 github-snake.svg / github-snake-dark.svg（贡献蛇形动画）
-
-  ══════════════════════════════════════════════════════════════════════
-
-<h2 align="center">📈 深度分析</h2>
-
-<p align="center">
-  <img width="100%" alt="Metrics" src="/github-metrics.svg" />
-</p>
+<!-- ═══════════════════════════ 贡献蛇形动画 ═══════════════════════════ -->
 
 <h2 align="center">🐍 贡献蛇形动画</h2>
 
@@ -274,5 +231,48 @@
   </picture>
 </p>
 
+<p align="center">
+  <sub>由 <a href="https://github.com/Platane/snk">Platane/snk</a> 通过 GitHub Actions 每天自动生成，产物存放在本仓库的 <code>output</code> 分支</sub>
+</p>
+
+<!--
   ══════════════════════════════════════════════════════════════════════
+   进阶（可选）：再启用一张「深度分析」指标卡（github-metrics.svg）
+  ══════════════════════════════════════════════════════════════════════
+
+  上面「GitHub 数据」里的卡片依赖第三方公共服务，公共实例随时可能限流或停摆
+  （本项目最初用的 github-readme-stats / github-profile-trophy /
+    github-readme-activity-graph 三个 Vercel 实例在 2026 年已分别返回
+    503 DEPLOYMENT_PAUSED 与 402 Payment Required，全部失效）。
+  如果你想要一层完全自持的深度分析卡（语言占比、贡献日历、编码习惯、
+  精选仓库、成就徽章等），本仓库已经内置好对应的 Metrics 工作流。
+
+  工作流已写好并通过语法校验，当前失败仅因为缺少一个仓库 Secret：
+
+    第 1 步 · 创建令牌
+      GitHub 右上角头像，Settings，Developer settings，Personal access tokens。
+      新建一个 token 并复制（只读公开数据即可，无需勾选额外 scope）。
+
+    第 2 步 · 添加仓库 Secret
+      本仓库 Settings，Secrets and variables，Actions，New repository secret。
+      Name 填 METRICS_TOKEN，Secret 粘贴上一步的令牌。
+
+    第 3 步 · 触发一次
+      Actions 标签页，选择 Metrics，点 Run workflow。
+      运行成功后仓库根目录会出现 github-metrics.svg，
+      此时把下面 3 行的注释去掉即可显示这张卡。
+
+  ══════════════════════════════════════════════════════════════════════
+
+<h2 align="center">📈 深度分析</h2>
+
+<p align="center">
+  <img width="100%" alt="Metrics" src="/github-metrics.svg" />
+</p>
 -->
+
+<!-- ═══════════════════════════ 底部横幅 ═══════════════════════════ -->
+
+<p align="center">
+  <img width="100%" alt="Thanks for visiting" src="https://capsule-render.vercel.app/api?type=waving&color=0:7C3AED,100:36BCF7&height=120&section=footer&text=Thanks%20for%20visiting&fontSize=24&fontColor=ffffff&animation=twinkling" />
+</p>
