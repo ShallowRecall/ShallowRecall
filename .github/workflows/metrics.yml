@@ -1,0 +1,81 @@
+# ──────────────────────────────────────────────────────────────────────
+# 用 lowlighter/metrics 在仓库内生成 GitHub 指标卡（github-metrics.svg）
+#
+# 为什么不用 github-readme-stats？
+#   2026 年该项目的公共 Vercel 实例已返回 503 DEPLOYMENT_PAUSED（作者手动暂停），
+#   镜像实例也会返回 "No GitHub API tokens found" 错误卡。
+#   改为在仓库内生成，产物走 GitHub 自己的 CDN，不受第三方限流影响。
+#
+# 使用前必读：
+#   本工作流需要仓库 Secret `METRICS_TOKEN`（一个 Personal Access Token）。
+#   创建路径：GitHub → Settings → Developer settings → Personal access tokens
+#   添加路径：本仓库 → Settings → Secrets and variables → Actions → New repository secret
+#   未配置该 Secret 时，Workflow 会失败，但不会影响 README 的显示。
+# ──────────────────────────────────────────────────────────────────────
+
+name: Metrics
+
+on:
+  # 每天 UTC 00:00（北京时间 08:00）自动刷新
+  schedule:
+    - cron: "0 0 * * *"
+  # 允许在 Actions 页面手动触发
+  workflow_dispatch:
+  # 推送到 main 时也刷新一次
+  push:
+    branches:
+      - main
+
+jobs:
+  github-metrics:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Generate GitHub metrics
+        uses: lowlighter/metrics@latest
+        with:
+          # 需要仓库 Secret METRICS_TOKEN
+          token: ${{ secrets.METRICS_TOKEN }}
+          # 统计的目标用户（对于主页仓库，等同于仓库所有者）
+          user: ShallowRecall
+          # 输出文件名，README 中通过 /github-metrics.svg 引用
+          filename: github-metrics.svg
+          template: classic
+          # 基础信息：头部 / 活动 / 社区 / 仓库 / 元数据
+          base: header, activity, community, repositories, metadata
+          config_timezone: Asia/Shanghai
+          # 以较宽的双栏布局渲染，效果更好
+          config_display: large
+
+          # ── 语言统计 ────────────────────────────────────────────────
+          plugin_languages: yes
+          plugin_languages_limit: 8
+          plugin_languages_sections: most-used
+          plugin_languages_details: bytes-size, percentage
+          # 忽略纯静态/样式语言，避免占比失真
+          plugin_languages_ignored: html, css, scss, less, jupyter notebook
+          plugin_languages_indepth: no
+
+          # ── 贡献日历（近半年）────────────────────────────────────────
+          plugin_isocalendar: yes
+          plugin_isocalendar_duration: half-year
+
+          # ── 编码习惯 ────────────────────────────────────────────────
+          plugin_habits: yes
+          plugin_habits_days: 14
+          plugin_habits_facts: yes
+          plugin_habits_charts: yes
+
+          # ── 精选 Star 仓库 ──────────────────────────────────────────
+          plugin_stars: yes
+          plugin_stars_limit: 4
+
+          # ── 成就徽章 ────────────────────────────────────────────────
+          plugin_achievements: yes
+          plugin_achievements_threshold: C
+          plugin_achievements_secrets: yes
+          plugin_achievements_display: compact
+
+          # 某个插件因权限不足失败时照常渲染其余部分，不整体报错
+          plugins_errors_fatal: no

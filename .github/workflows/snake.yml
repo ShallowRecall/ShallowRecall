@@ -1,0 +1,53 @@
+# ──────────────────────────────────────────────────────────────────────
+# 用 Platane/snk 生成「贡献蛇形动画」，并推送到 output 分支
+#
+# 为什么用这个方案？
+#   动画 SVG 在仓库内生成，通过 raw.githubusercontent.com 引用，
+#   走 GitHub 自己的 CDN，不依赖任何第三方服务，国内访问也更稳定。
+#
+# 无需额外配置：
+#   本工作流只使用自动注入的 GITHUB_TOKEN，不需要手动创建 Secret。
+#
+# 产物位置：
+#   output 分支 → github-snake.svg / github-snake-dark.svg
+#   README 中通过 raw.githubusercontent.com/<用户名>/<仓库名>/output/... 引用
+# ──────────────────────────────────────────────────────────────────────
+
+name: Snake Animation
+
+on:
+  # 每天 UTC 02:00（北京时间 10:00）自动刷新
+  schedule:
+    - cron: "0 2 * * *"
+  # 允许在 Actions 页面手动触发
+  workflow_dispatch:
+  # 推送到 main 时也刷新一次
+  push:
+    branches:
+      - main
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Generate snake animation
+        uses: Platane/snk/svg-only@v3
+        with:
+          # github.repository_owner 即用户名 ShallowRecall
+          github_user_name: ${{ github.repository_owner }}
+          outputs: |
+            dist/github-snake.svg
+            dist/github-snake-dark.svg?palette=github-dark
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Push generated assets to output branch
+        uses: crazy-max/ghaction-github-pages@v5
+        with:
+          target_branch: output
+          build_dir: dist
+          jekyll: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
